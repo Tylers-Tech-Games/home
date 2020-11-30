@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	    <title>Web Designer Tycoon</title>
+	    <link rel="icon" type="image/png" href="https://000548198.codepen.website/css/Images/computer.png">
+	    <style>
+	      .hidden {
+        	display: none;
+        } /*Hides the footer and everything else until it gets bought*/
+        .small {
+        	width: 200px;
+        } /*Makes the computer small*/
+        .body {
+        	background-image: linear-gradient(236deg, #874984, #6b4987);
+        } /*Background color and background image(pattern)*/
+        .info-link {
+        	text-decoration: none;
+        	color: black;
+        	font-weight: bold;
+        } /*Makes the links look different*/
+        .footer {
+        	background-color: #498487;
+        	width: 100%;
+        	position: fixed;
+        	left: 0;
+        	right: 0;
+        	botmm: 0;
+        	height: 40px;
+        	display: none;
+        } /*Makes the footer a footer and stays at the bottom*/
+        .img {
+        	display: block;
+        	margin-left: auto;
+        	margin-right: auto;
+        	width: 40%;
+        } /*Makes the computer in the middle and bigger*/
+        .visible {
+        	display: block;
+        } /*Makes the stuff visible that is bought of starts out visible*/
+        .money {
+        	font-weight: bold;
+        	font-size: 18pt;
+        } /*Changes the size and font weight of the money*/
+        .tab-1b {
+        	display: none;
+        } /*Makes the workshop hidden and shown when the tabs are switched*/
+        .tab-2b {
+        	display: lock;
+        } /*Makes the workshop hidden and shown when the tabs are switched*/
+        .tabButton {
+        	font-size: 20pt;
+        	display: block;
+        	margin-left: auto;
+        	margin-right: auto;
+        } /*Makes the button bigger and in the middle*/
+        .saveButton {
+        	font-size: 20pt;
+        	display: block;
+        	margin-left: auto;
+        	margin-right: auto;
+        } /*Makes the button bigger and in the middle*/
+        .shop-items {
+        	cursor: pointer;
+        } /*Makes the shop items like a button*/
+        .bodyNoBuy {
+          background-color: white;
+        }
+        .inline {
+          display: inline;
+        } /*For inline stuff*/
+	    </style>
+	    <style>
+	      #shop {
+	        
+        } /* */
+        .tab-1a {
+        	display: none;
+        } /* */
+        
+        .tab-2a {
+        	display: block;
+        } /* */
+
+	    </style>
+</head>
+
+<body id="body" class="bodyNoBuy">
+		<button id="toggleButton" class="tabButton" onclick="toggleTabs()">Market</button>
+		<div id="main" class="tab-2b">
+				<img class="small" src="https://000548198.codepen.website/css/Images/computer.png" id="computer" alt="Web Designer Tycoon">
+				<p id="counterVisible" class="money">$0</p>
+   	    <button onclick="save()" class="saveButton" >Save</button><br>
+    	  <button onclick="goLoad()" class="saveButton" >Load</button><br>
+		  	<button onclick="clearSave()" class="saveButton" >Clear Save Data</button>
+		</div>
+		<div class="hidden" id="footer">
+				<footer>
+						<a href="in.html" target="_blank" class="footer">Info</a>
+				</footer>
+		</div>
+		<div id="shop" class="tab-1a">
+				<h1>WELCOME TO THE SHOP!!</h1>
+				<h2>WE HAVE A HUGE SELECTION OF ITEMS FOR YOU!!</h2>
+				<p onclick="shopBuy1()" class="shop-items" id="shopItem">Buy a better background. $10</p>
+				<p onclick="shopBuy3a()" class="shop-items" id="shopItem2"></p>
+				<button class="1-100_workers hidden">1</button>
+				<button class="1-100_workers hidden">10</button>
+				<button class="1-100_workers hidden">100</button>
+		</div>
+		<div id="scripts">
+				<script id="click">
+				  var nAn = ""
+				  function onCl() {
+	          counter += moneyPerProgram;
+	          update();
+          } //When the computer is clicked
+          function update() {
+	          document.getElementById("counterVisible").innerHTML = "$" + counter;
+          }
+          document.getElementById("computer").addEventListener("click", function () {
+	          onCl();
+          });
+          function goLoad() {
+	          if (localStorage.money != "" && localStorage.money >= counter) {
+	            counter = +localStorage.money;
+	            update();
+	            localStorage.clear()
+	            console.log("Sucsessfuly collected your money from \"The Bank\"\. I wish you all the best for your designing")
+	          }
+	          else {
+	            if (localStorage.money == "") {
+	              localStorage.clear()
+	              counter = 0
+	              console.log("All of your savings in \"The Bank\" have been cleared.")
+	            }
+	          localStorage.clear()
+	          console.log("The number saved was not loaded because there was either nothing in \"The Bank\" or it had less than what you had earned stored in it. It has now been cleared for your safety.")
+	          }
+          }
+          function save() {
+            nAn = localStorage.money
+	          if (nAn == "") {
+	            localStorage.money = counter;
+	          }
+	        }
+          function clearSave() {
+	          localStorage.clear()
+          }
+				</script>
+				<!--This is the stuff for other things script-->
+				<script id="pre-gameStuff">
+				  var counter = 0; //What counts the money
+          var moneyPerProgram = 0.25; //How much each program costs
+          var countVis = document.getElementById("counterVisible"); //Makes it easier to do document for the counter
+          var timer = setInterval(update, 1); //This will be for an upgrade in the future, it is for the workers you can hire andd the make programs for you
+				</script>
+				<!-- This is the making programs script-->
+				<script id="shopStuff">
+				  var txt = 0; //1 fun is on shop, 0 = It is on the main
+          var text = "Main"; //What the tab button says
+          function workersFunct1() {
+            document.getElementById("shopItem2").innerHTML = "Hire a worker: ";
+            document.getElementsByClassName("1-100_workers").classList.add("inline");
+            document.getElementsByClassName("1-100_workers").classList.remove("hidden");
+          }
+          function buyComputer() {
+          	moneyPerProgram = 0.5;
+          }
+          function buyBetterComputer() {
+          	document.getElementById("computer").classList.add("img");
+          	workersFunct1()
+          }
+          function buyBg() {
+          	var element = document.getElementById("body");
+          	element.classList.add("body");
+          	element.classList.toggle("bodyNoBuy");
+          } //Buy the background. This doesnt check the money just changing the css
+          function updateTxt() {
+          	if (txt == 1) {
+          		text = "Market";
+          	} else {
+          		text = "Workshop";
+          	}
+          	txt = Math.abs(txt - 1);
+          	document.getElementById("toggleButton").innerHTML = text;
+          } //Updates the tab button text
+          function toggleTabs() {
+          	var element1 = document.getElementById("shop");
+          	element1.classList.toggle("tab-2a");
+          	element1.classList.toggle("tab-1a");
+          	var element2 = document.getElementById("main");
+          	element2.classList.toggle("tab-2b");
+          	element2.classList.toggle("tab-1b");
+          	updateTxt();
+          } //Shows and hides the workshop and the shop
+          function removeNoMoneyTxt() {
+          	document.getElementById("shopItem").innerHTML = shopBuyWhat;
+          } //Removes the text that says not enough money
+          function noBuy1() {
+          	document.getElementById("shopItem").innerHTML =
+          		"Buy a better background. $10";
+          } //Changes the text when you try to buy the first upgrade but dont have enough money
+          function noBuy2() {
+          	document.getElementById("shopItem").innerHTML = "Buy a better computer. $50";
+          } //Changes the text when you try to buy the second upgrade but dont have enough money
+          function noBuy3e() {
+          	document.getElementById("shopItem").innerHTML = "Buy a better computer. $50";
+          } //Changes the text when you try to buy the third-e upgrade but dont have enough money
+          function noBuy4e() {
+          	document.getElementById("shopItem").innerHTML =
+          		"Buy an even better computer. $150";
+          } //Changes the text when you try to buy the third-e upgrade but dont have enough money
+          function shopBuy1() {
+          	var docGetId = document.getElementById("shopItem");
+          	if (counter >= 10) {
+          		docGetId.onclick = shopBuy2;
+          		docGetId.innerHTML = "Buy a better computer. $50";
+          		buyBg();
+          		counter = counter - 10;
+          		update();
+          		changeTextBg();
+          	} else {
+          		document.getElementById("shopItem").innerHTML =
+          			"NOT ENOUGH MONEY, KEEP WORKING.";
+          		setTimeout(noBuy1, 2000);
+          	}
+          } //The first shop item that checks if you have enough and stuff
+          function shopBuy2() {
+	          var docGetId = document.getElementById("shopItem");
+	          if (counter >= 50) {
+		          docGetId.onclick = shopBuy3e;
+		          docGetId.innerHTML = "Buy an even better computer. $150";
+		          buyComputer();
+		          counter = counter - 50;
+		          update();
+	          } else {
+		          document.getElementById("shopItem").innerHTML =
+			          "NOT ENOUGH MONEY, KEEP WORKING.";
+		          setTimeout(noBuy2, 2000);
+	          }
+          } //The second shop item that checks if you have enough and stuff
+          function shopBuy3e() {
+	          var docGetId = document.getElementById("shopItem");
+	          if (counter >= 150) {
+		          docGetId.onclick = shopBuy4e;
+		          docGetId.innerHTML = "Click me to buy ads. $300";
+		          buyBetterComputer();
+		          counter -= 150;
+		          update();
+	          }
+	          else {
+		          document.getElementById("shopItem").innerHTML =
+			          "NOT ENOUGH MONEY, KEEP WORKING.";
+		          setTimeout(noBuy3e, 2000);
+	          }
+          } //The third shop item that checks if you have enough and stuff
+          function shopBuy4e() {
+            var docGetId = document.getElementById("shopItem");
+	          if (counter >= 300) {
+		          docGetId.onclick = shopBuy5e;
+		          docGetId.innerHTML =
+			          "That is the last item I currently have. Please come back later.";
+		          buyAds();
+		          counter -= 300;
+		          update();
+	          }
+	          else {
+		          document.getElementById("shopItem").innerHTML =
+			          "NOT ENOUGH MONEY, KEEP WORKING.";
+		          setTimeout(noBuy4e, 2000);
+	          }
+          } //The fourth shop item that checks if you have enough and stuff
+          function shopBuy5e() {} //The fifth shop item that checks if you have enough and stuff
+          function shopBuy3a() {} //The third shop item that checks if you have enough and stuff
+          function shopBuy4a() {} //The fourth shop item that checks if you have enough and stuff
+          function shopBuy5a() {} //The fifth shop item that checks if you have enough and stuff
+
+				</script>
+		</div>
+</body>
+</html>
