@@ -1,229 +1,227 @@
-<!DOCTYPE html>
-<html>
-  <head>
-      <!--<link href="" rel="stylesheet" type="text/css">-->
-      <title>Burger Clicker</title>
-      <link rel="icon" type="image/png" href="https://i2.wp.com/freepngimages.com/wp-content/uploads/2016/11/bacon-burger.png?fit=895%2C895">
-
-      <script>
-              
-        var timer = setInterval(autoClick, 1000)
-
-        var key = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y",]
-
-        var dollars = 0
-
-        var clVal = 1
-
-        var AcVal = 0
-
-        var AcPr = 50
-
-        var ClPr = 50
-
-        var z = 0
-
-        var saveCode = '0x0x0x0x0x0x0'
-              
-        function update() {
-          document.getElementById("p").innerHTML = dollars + "$"
-        }
-              
-        function saveMoney() {
-          localStorage.moneySave = dollars
-        }
-        
-        function onCl() {
-          dollars = dollars + clVal
-          document.getElementById("p").innerHTML = dollars + "$"
-        }
-        
-        function autoClick() {
-          dollars = dollars + AcVal
-          document.getElementById("p").innerHTML = dollars + "$"
-        }
-        
-        function upgradeAc() {
-          if (dollars >= AcPr) {
-            AcVal = AcVal + 1
-            dollars = dollars - AcPr
-            AcPr = AcPr * 2
-            update()
+  <!DOCTYPE html>
+  <html>
+    <head>
+        <!--<link href="" rel="stylesheet" type="text/css">-->
+        <title>Burger Clicker</title>
+        <link rel="icon" type="image/png" href="https://i2.wp.com/freepngimages.com/wp-content/uploads/2016/11/bacon-burger.png?fit=895%2C895">
+  
+        <script>
+                
+          var timer = setInterval(autoClick, 1000)
+  
+          var key = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y"]
+  
+          var dollars = 0
+  
+          var clVal = 1
+  
+          var AcVal = 0
+  
+          var AcPr = 50
+  
+          var ClPr = 50
+  
+          var z = 0
+  
+          var saveCode = '0x0x0x0x0x0x0'
+                
+          function update() {
+            document.getElementById("p").innerHTML = dollars + "$"
           }
-          else {
-            alert("Not enough dollars!! You need " + (AcPr - dollars) + " more dollars.")
+                
+          function saveMoney() {
+            localStorage.moneySave = dollars
           }
-        }
-        
-        function upgradeAcSpeed() {
-          if (dollars >= (AcPr * 2)) {
-            if (z == 0) {
-              clearInterval(timer)
-              timer = setInterval(autoClick, 500)
-              dollars = dollars - (AcPr * 2)
-              z++
+          
+          function onCl() {
+            dollars = dollars + clVal
+            document.getElementById("p").innerHTML = dollars + "$"
+          }
+          
+          function autoClick() {
+            dollars = dollars + AcVal
+            document.getElementById("p").innerHTML = dollars + "$"
+          }
+          
+          function upgradeAc() {
+            if (dollars >= AcPr) {
+              AcVal = AcVal + 1
+              dollars = dollars - AcPr
               AcPr = AcPr * 2
               update()
             }
             else {
-              if (z == 1) {
+              alert("Not enough dollars!! You need " + (AcPr - dollars) + " more dollars.")
+            }
+          }
+          
+          function upgradeAcSpeed() {
+            if (dollars >= (AcPr * 2)) {
+              if (z == 0) {
                 clearInterval(timer)
-                timer = setInterval(autoClick, 250)
+                timer = setInterval(autoClick, 500)
                 dollars = dollars - (AcPr * 2)
-                AcPr = AcPr * 2
                 z++
+                AcPr = AcPr * 2
                 update()
               }
               else {
-                if (z == 2) {
+                if (z == 1) {
                   clearInterval(timer)
-                  timer = setInterval(autoClick, 125)
+                  timer = setInterval(autoClick, 250)
                   dollars = dollars - (AcPr * 2)
                   AcPr = AcPr * 2
                   z++
                   update()
-                  
                 }
                 else {
-                  if (z == 3) {
+                  if (z == 2) {
                     clearInterval(timer)
-                    timer = setInterval(autoClick, 62)
+                    timer = setInterval(autoClick, 125)
                     dollars = dollars - (AcPr * 2)
                     AcPr = AcPr * 2
                     z++
                     update()
+                    
                   }
                   else {
-                    if (z == 4) {
+                    if (z == 3) {
                       clearInterval(timer)
-                      timer = setInterval(autoClick, 31)
+                      timer = setInterval(autoClick, 62)
                       dollars = dollars - (AcPr * 2)
                       AcPr = AcPr * 2
                       z++
                       update()
                     }
                     else {
-                      if (z == 5) {
+                      if (z == 4) {
                         clearInterval(timer)
-                        timer = setInterval(autoClick, 16)
+                        timer = setInterval(autoClick, 31)
                         dollars = dollars - (AcPr * 2)
                         AcPr = AcPr * 2
                         z++
                         update()
                       }
                       else {
-                        if (z == 6) {
+                        if (z == 5) {
                           clearInterval(timer)
-                          timer = setInterval(autoClick, 8)
+                          timer = setInterval(autoClick, 16)
                           dollars = dollars - (AcPr * 2)
                           AcPr = AcPr * 2
                           z++
                           update()
                         }
-                    
+                        else {
+                          if (z == 6) {
+                            clearInterval(timer)
+                            timer = setInterval(autoClick, 8)
+                            dollars = dollars - (AcPr * 2)
+                            AcPr = AcPr * 2
+                            z++
+                            update()
+                          }
+                          else {
+                            alert("You cannot buy this, it is at the max level.")
+                          }
+                        }
+                        
                       }
-                  
                     }
+                    
                   }
-                  
+                }
+                
                 }
               }
-              
-                  else {
-                    alert("You cannot buy this, it is at the max level.")
-                  }
+              else {
+                  alert("Not enough dollars!! You need " + ((AcPr * 2) - dollars) + " more dollars.")
               }
+              update()
+          }
+          
+          function upgradeCl() {
+            if (dollars >= ClPr) {
+                    clVal++
+                    dollars = dollars - ClPr
+                    ClPr = ClPr * 2
+                    update()
             }
-          else {
-              alert("Not enough dollars!! You need " + ((AcPr * 2) - dollars) + " more dollars.")
+            else {
+                    alert("Not enough dollars!! You need " + (ClPr - dollars) + " more dollars.")
+            }
           }
+          
+          
           update()
-        }
-                        
-        
-        function upgradeCl() {
-          if (dollars >= ClPr) {
-                  clVal++
-                  dollars = dollars - ClPr
-                  ClPr = ClPr * 2
-                  update()
-          }
-          else {
-                  alert("Not enough dollars!! You need " + (ClPr - dollars) + " more dollars.")
-          }
-        }
-        
-        
-        update()
-      </script>
-                
-                <style>
-                        .money-visible {
-                                display: inline;
-                                border: #D175FF 2px solid;
-                                width: ;
-                                padding: 5px 5px 5px 5px;
-                                color: #FFD175
-                                
-                        }
-                        .burger {
-                                margin-left: ;
-                                width: 300px;
-                        }
-		   .burger:hover {
-			    width: 320px;
-		   }
-                        .button {
-                                background-color: #C79926;
-                                border: #C79926;
-				  border-radius: 5px;
-				  font-size: 15pt;
-
-                        }
-                        .button:hover {
-                                background-color: #FFD175;
-                                border: none;
-                       }
-			 body {
-				  text-align:center;
-				  font-style:;
-			 }
-                       .linkWeb {
-			   text-decoration:none;
-			   color: black;
-			   border: #C79926 solid 5px;
-			   background-color: #C7AC66;
-			   border-radius: 5px;
-			   font-size: 15pt;
-			 }
-                </style>
-        </head>
-        
-        <body style="background-color:#2554C7;">
-                <div class="border-green inline">
-                        <h1 class="money-visible" id="p"><b>0$</b></h1>
-                </div>
-                        <br>
-                <img class="burger" onclick="onCl()" src="https://i2.wp.com/freepngimages.com/wp-content/uploads/2016/11/bacon-burger.png?fit=895%2C895">
-
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                
-                <footer>
-                        <button class="button" onclick="upgradeAc()">Click me to upgrade <br>the autoclick value</button>
-                        <button class="button" onclick="upgradeAcSpeed()">Click me to upgrade <br>the autoclick speed</button>
-                        <button class="button" onclick="upgradeCl()">Click me to upgrade <br>the click value</button>
-                        
-                        <br>
-                        <br>
-                        
-                        <button class="button" onclick="saveMoney()">Click me to <br>save</button>
-                </footer>
-        </body>
-        
-</html>
+        </script>
+                  
+                  <style>
+                          .money-visible {
+                                  display: inline;
+                                  border: #D175FF 2px solid;
+                                  width: ;
+                                  padding: 5px 5px 5px 5px;
+                                  color: #FFD175
+                                  
+                          }
+                          .burger {
+                                  margin-left: ;
+                                  width: 300px;
+                          }
+  		   .burger:hover {
+  			    width: 320px;
+  		   }
+                          .button {
+                                  background-color: #C79926;
+                                  border: #C79926;
+  				  border-radius: 5px;
+  				  font-size: 15pt;
+  
+                          }
+                          .button:hover {
+                                  background-color: #FFD175;
+                                  border: none;
+                         }
+  			 body {
+  				  text-align:center;
+  				  font-style:;
+  			 }
+                         .linkWeb {
+  			   text-decoration:none;
+  			   color: black;
+  			   border: #C79926 solid 5px;
+  			   background-color: #C7AC66;
+  			   border-radius: 5px;
+  			   font-size: 15pt;
+  			 }
+                  </style>
+          </head>
+          
+          <body style="background-color:#2554C7;">
+                  <div class="border-green inline">
+                          <h1 class="money-visible" id="p"><b>0$</b></h1>
+                  </div>
+                          <br>
+                  <img class="burger" onclick="onCl()" src="https://i2.wp.com/freepngimages.com/wp-content/uploads/2016/11/bacon-burger.png?fit=895%2C895">
+  
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  
+                  <footer>
+                          <button class="button" onclick="upgradeAc()">Click me to upgrade <br>the autoclick value</button>
+                          <button class="button" onclick="upgradeAcSpeed()">Click me to upgrade <br>the autoclick speed</button>
+                          <button class="button" onclick="upgradeCl()">Click me to upgrade <br>the click value</button>
+                          
+                          <br>
+                          <br>
+                          
+                          <button class="button" onclick="saveMoney()">Click me to <br>save</button>
+                  </footer>
+          </body>
+          
+  </html>
