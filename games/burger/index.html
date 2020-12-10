@@ -27,6 +27,7 @@
                 
           function update() {
             document.getElementById("p").innerHTML = dollars + "$"
+            document.getElementById("prices").innerHTML = "Autoclick Value Price: $" + AcPr + " <br>Autoclick Speed Price: $" + (AcPr * 2) + " <br>Click Value Price: $" + ClPr
           }
                 
           function saveMoney() {
@@ -151,31 +152,53 @@
             }
           }
           
+          function miceOut(numO) {
+            if (numO == 1){
+              document.getElementById("AcValButt").innerHTML = "Click me to upgrade \n the autoclick value"
+            }
+            else {
+              if (numO == 2) {
+                
+              }
+              else {
+                if (numO == 3) {
+                  
+                }
+              }
+            }
+          }
           
           update()
         </script>
                   
                   <style>
-                          .money-visible {
-                                  display: inline;
-                                  border: #D175FF 2px solid;
-                                  width: ;
-                                  padding: 5px 5px 5px 5px;
-                                  color: #FFD175
+                  #prices {
+                    text-align: center;
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+                    width: 20%;
+                  }
+                  .money-visible {
+                    display: inline;
+                    border: #D175FF 2px solid;
+                    width: ;
+                    padding: 5px 5px 5px 5px;
+                    color: #FFD175
                                   
-                          }
-                          .burger {
-                                  margin-left: ;
-                                  width: 300px;
-                          }
+                  }
+                  .burger {
+                    margin-left: ;
+                    width: 300px;
+                  }
   		   .burger:hover {
   			    width: 320px;
   		   }
-                          .button {
-                                  background-color: #C79926;
-                                  border: #C79926;
-  				  border-radius: 5px;
-  				  font-size: 15pt;
+                  .button {
+                    background-color: #C79926;
+                    border: #C79926;
+                    border-radius: 5px;
+                    font-size: 15pt;
   
                           }
                           .button:hover {
@@ -213,9 +236,10 @@
                   <br>
                   
                   <footer>
-                          <button class="button" onclick="upgradeAc()">Click me to upgrade <br>the autoclick value</button>
-                          <button class="button" onclick="upgradeAcSpeed()">Click me to upgrade <br>the autoclick speed</button>
-                          <button class="button" onclick="upgradeCl()">Click me to upgrade <br>the click value</button>
+                    <p id="prices" class="button">Autoclick Value Price: $50 <br>Autoclick Speed Price: $100 <br>Click Value Price: $50</p>
+                          <button class="button"  id="AcValButt" onmouseenter="miceEnter(1)" onclick="upgradeAc()">Click me to upgrade <br>the autoclick value</button>
+                          <button class="button"  id="AcSpdButt" onmouseenter="miceEnter(2)" onclick="upgradeAcSpeed()">Click me to upgrade <br>the autoclick speed</button>
+                          <button class="button"  id="ClValButt" onmouseenter="miceEnter(3)" onclick="upgradeCl()">Click me to upgrade <br>the click value</button>
                           
                           <br>
                           <br>
